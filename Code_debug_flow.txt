@@ -1,0 +1,46 @@
+Error code 1:
+	Python says: invalid literal for int() with base 10: b'\xc2\xb0C'Exception when trying to run test:\code\makemework\tests\test_e2e_purchase_product.pyPython 	says:TypeError('%d format: a number is required, not bytes')FAILED
+while checking in the main_page.py the error was that the page use to get the values in str and it was supposed to be converted to int. by spliting the values and by extracting the values in the array by giving the array postion the error was resolved.
+
+Error code 2:
+Exception when trying to run test:\code\makemework\tests\test_e2e_purchase_product.pyPython says:KeyError('moisturizers')FAILED
+by checking the keyerror  and dictionary i fiund out he way the dictionary is implemented from that we can get the keyerror name in which it has to be chenged accordingly
+
+
+Error code 3:
+Python says:AttributeError("'NoneType' object has no attribute 'name'")
+FAILED
+It had occured as the min value was intialized to 10000000 and the if condition was checking for products greater than 100000000
+I removed the error by changing the >= condition to <= 
+
+
+Error code 4:
+Python says:TypeError("unsupported operand type(s) for -: 'NoneType' and 'NoneType'")
+FAILED
+I was able to remove the error by adding the return statement in the object_product in the get_current_cart_qaulity definition 
+
+
+Error code 5:
+Python says:Stop_Test_Exception('Stopping test because: Automation is not on the cart page')FAILED
+I found out that their was an error in the xpath, I changed the xpath in the locaters_conf file and the error was resolved.
+
+Error code 6:
+Python says:AttributeError("'Main_Page' object has no attribute 'verify_cart'")
+FAILED
+In product _cart.py page after adding items to the cart it used to go to the main page. I fixed the error by changing the main to cart which resolved the issue.
+
+
+Error code 7:
+Python says:IndexError('list index out of range')
+FAILED
+apending outside the for loop, moved the appending  function inside the inner for loop. Error resolved.
+
+Error code 8: Critical error
+Python says:Stop_Test_Exception('Stopping test because: Something wrong with the cart. The log messages above will have the details')
+FAILED
+In cart page the booleans assigned was 'False' in verify_extra_item changed it to 'True' error resolved.
+
+Error code 9:
+Python says:AttributeError("'Cart_Page' object has no attribute 'past_counter'")
+FAILED
+Changed the name from 'past_counter' to 'pass_counter'
