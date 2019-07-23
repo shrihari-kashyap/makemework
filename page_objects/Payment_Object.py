@@ -27,10 +27,6 @@ class Payment_Object(Base_Page):
 
 
     def go_to_payment_frame(self):
-        "to check"
-        print("I am printing frame")
-        "Go to the payment frame"
-        print("I am coming here")
         result_flag = self.click_payment_button()
         time.sleep(10)
 
@@ -174,8 +170,8 @@ class Payment_Object(Base_Page):
         result_flag &=self.set_expiry_date(expiry_date)
         result_flag &=self.set_cvc_number(cvc_number)
         result_flag &=self.set_zip_code(zip_code)
-        result_flag &=self.click_checkbox()
-        result_flag &=self.set_mobile_number(mobile_number)
+        #result_flag &=self.click_checkbox()
+        #result_flag &=self.set_mobile_number(mobile_number)
         result_flag &=self.click_submit()
     
         return result_flag
