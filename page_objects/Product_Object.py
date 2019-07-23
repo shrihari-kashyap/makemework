@@ -29,7 +29,7 @@ class Product_Object():
             integer = int(string)
         except Exception as e:
             if not expect_fail:
-                self.write("Unable to convert the string %s into a number"%string)
+                self.write("Unable to convert the string %s into a number"%string) #pylint: disable=no-member
             integer = default
 
         return integer
@@ -110,13 +110,13 @@ class Product_Object():
     @Wrapit._screenshot
     def get_current_cart_quantity(self):
         "Return the number of items in the cart"
-        cart_text = self.get_text(self.CART_QUANTITY_TEXT)
+        cart_text = self.get_text(self.CART_QUANTITY_TEXT) 
         cart_quantity = cart_text.split()[0]
         cart_quantity = cart_quantity.decode('ascii')
         empty_cart_flag = True if self.CART_QUANTITY == 0 else False
         cart_quantity = self.convert_str_to_int(cart_quantity, default=0, expect_fail = empty_cart_flag)
         self.CART_QUANTITY = cart_quantity
-        self.conditional_write(True,
+        self.conditional_write(True, 
         positive="The cart currently has %d items"%self.CART_QUANTITY,
         negative="")
 
@@ -156,6 +156,6 @@ class Product_Object():
     def go_to_cart(self):
         "Go to the cart page"
         result_flag = self.click_cart_button()
-        result_flag &= self.verify_cart_page()
+        result_flag = self.verify_cart_page()
 
         return result_flag
