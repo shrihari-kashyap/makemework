@@ -719,5 +719,22 @@ class Base_Page(Borg,unittest.TestCase):
         "Overwrite this method in your Page module if you want to visit a specific URL"
         pass
 
+    def switch_frame(self,name):
+        "Make the driver switch to the frame with a name"
+        result_flag = False
+        try:
+            if name is not None:            
+                self.driver.switch_to.frame(frame_reference= self.driver.find_element_by_xpath(name))                
+                result_flag = True
+            self.conditional_write(result_flag,
+                                'Automation switched to the frame: %s'%name,
+                                'Unable to locate and switch to the frame with name: %s'%name,
+                                level='debug')
+        except Exception as e:
+            self.write("Exception when trying to switch frame")
+            self.write(str(e))
+            self.exceptions.append("Error when switching frame")
+
+        return result_flag
 
     _get_locator = staticmethod(_get_locator)
