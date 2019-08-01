@@ -12,6 +12,8 @@ class Main_Page(Base_Page):
     TEMPERATURE_FIELD = locators.TEMPERATURE_FIELD
     BUY_BUTTON = locators.BUY_BUTTON
     PAGE_HEADING = locators.PAGE_HEADING
+    BUY_MOISTURIZER = BUY_BUTTON%"moisturizers"
+    BUY_SUNSCREEN = BUY_BUTTON%"sunscreens"
 
     def start(self):
         "Use this method to go to specific URL -- if needed"
@@ -62,5 +64,33 @@ class Main_Page(Base_Page):
         self.conditional_write(result_flag,
         positive="Automation is on the %s page"%product_type.title(),
         negative="Automation could not navigate to the %s page"%product_type.title())
+
+        return result_flag
+
+
+    def is_temp_exist(self):
+        "This method checks whether the tempearture exist or not"
+        result_flag=self.check_element_present(self.TEMPERATURE_FIELD)
+        self.conditional_write(result_flag,
+        positive="Temperature field exist",
+        negative="Temperature field does notexist")
+
+        return result_flag
+
+    def is_moisturizers_exist(self):
+        "This method checks whether the moisturizer exist or not"
+        result_flag=self.check_element_present(self.BUY_MOISTURIZER)
+        self.conditional_write(result_flag,
+        positive="Buy Moisturizer button exist",
+        negative="Buy Moisturizer button does not exist")
+
+        return result_flag
+
+    def is_sunscreen_exist(self):
+        "This method checks whether the sunscreen exist or not"
+        result_flag=self.check_element_present(self.BUY_SUNSCREEN)
+        self.conditional_write(result_flag,
+        positive="Buy Suncreen button exist",
+        negative="Buy Suncreen button does not exist")
 
         return result_flag

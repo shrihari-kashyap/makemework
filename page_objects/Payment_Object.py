@@ -27,6 +27,7 @@ class Payment_Object(Base_Page):
 
 
     def go_to_payment_frame(self):
+        "To verify swith to payment frame"
         result_flag = self.click_payment_button()
         time.sleep(10)
 
